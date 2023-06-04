@@ -1,4 +1,3 @@
-import 'package:badges/badges.dart';
 import 'package:first_ui/views/product%20screen/model/product_model.dart';
 import 'package:first_ui/views/product%20screen/view/detail_product.dart';
 import 'package:first_ui/views/setting%20Screen/screen/setting_screen.dart';
@@ -18,19 +17,19 @@ class _HomeScreenState extends State<HomeScreen> {
       drawer: const SettingScreen(),
       appBar: AppBar(
         title: const Text('Category'),
-        actions: [
+        actions: const [
           Center(
             child: Badge(
-              position: BadgePosition.topEnd(),
-              showBadge: true,
-              badgeContent: const Text('4'),
-              child: const Icon(
+              // position: BadgePosition.topEnd(),
+              // showBadge: true,
+              // badgeContent: const Text('4'),
+              child: Icon(
                 Icons.shopping_cart,
                 size: 30,
               ),
             ),
           ),
-          const SizedBox(
+          SizedBox(
             width: 30,
           )
         ],
