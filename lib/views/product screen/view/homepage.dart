@@ -1,8 +1,12 @@
-import 'package:badges/badges.dart';
+import 'package:badges/badges.dart' as badges;
 import 'package:first_ui/views/product%20screen/model/product_model.dart';
 import 'package:first_ui/views/product%20screen/view/detail_product.dart';
+import 'package:first_ui/views/product%20screen/view/shopping_card.dart';
 import 'package:first_ui/views/setting%20Screen/screen/setting_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+
+import '../controller/shopping_controller.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -12,6 +16,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  ShoppingController controller = Get.put(ShoppingController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -19,14 +24,20 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('Category'),
         actions: [
-          Center(
-            child: Badge(
-              position: BadgePosition.topEnd(),
-              showBadge: true,
-              badgeContent: const Text('4'),
-              child: const Icon(
-                Icons.shopping_cart,
-                size: 30,
+          InkWell(
+            onTap: () {
+              Get.to(() => const ShoppingCardScreen());
+            },
+            child: Center(
+              child: badges.Badge(
+                position: badges.BadgePosition.topEnd(),
+                showBadge: controller.products.isEmpty ? false : true,
+                badgeContent:
+                    Obx(() => Text(controller.products.length.toString())),
+                child: const Icon(
+                  Icons.shopping_cart,
+                  size: 30,
+                ),
               ),
             ),
           ),

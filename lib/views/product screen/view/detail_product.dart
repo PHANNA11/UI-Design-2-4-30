@@ -1,6 +1,9 @@
+import 'package:first_ui/views/product%20screen/controller/shopping_controller.dart';
 import 'package:first_ui/views/product%20screen/model/product_model.dart';
+import 'package:first_ui/views/product%20screen/view/shopping_card.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class DetailProduct extends StatefulWidget {
   DetailProduct({Key? key, required this.productModel}) : super(key: key);
@@ -11,6 +14,7 @@ class DetailProduct extends StatefulWidget {
 
 class _DetailProductState extends State<DetailProduct> {
   TextEditingController desController = TextEditingController();
+  ShoppingController controller = Get.put(ShoppingController());
   @override
   void initState() {
     // TODO: implement initState
@@ -108,24 +112,29 @@ class _DetailProductState extends State<DetailProduct> {
                     ))),
             Expanded(
                 flex: 2,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: const [
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Icon(
-                        Icons.shopping_cart,
-                        size: 40,
+                child: InkWell(
+                  onTap: () {
+                    controller.addToCard(widget.productModel);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Icon(
+                          Icons.shopping_cart,
+                          size: 40,
+                        ),
                       ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.all(8.0),
-                      child: Text(
-                        'Add to Cart',
-                        style: TextStyle(fontSize: 24),
-                      ),
-                    )
-                  ],
+                      Padding(
+                        padding: EdgeInsets.all(8.0),
+                        child: Text(
+                          'Add to Cart',
+                          style: TextStyle(fontSize: 24),
+                        ),
+                      )
+                    ],
+                  ),
                 ))
           ],
         ),

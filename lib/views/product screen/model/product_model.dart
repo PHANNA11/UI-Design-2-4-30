@@ -20,7 +20,7 @@ class ProductModel {
 
 List<ProductModel> listProducts = [
   ProductModel(
-    code: 1234,
+    code: 8234,
     name: 'Miklk and Yaur',
     faverite: true,
     price: 5.64,
@@ -52,7 +52,7 @@ List<ProductModel> listProducts = [
     description: 'Fast Food Health Risks & Cost | Healthful',
   ),
   ProductModel(
-    code: 1234,
+    code: 1204,
     name: 'Miklk and Yaur',
     faverite: false,
     price: 5.64,
